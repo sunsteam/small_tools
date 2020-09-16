@@ -29,7 +29,8 @@ def resetCodingType(fileList, toCoding="UTF-8"):
         if suffix == ".cpp" or suffix == ".h":
             count += 1
             coding = get_encoding(f)
-            # print ("suffix = %s, coding = %s" % (suffix, coding))
+            #name = os.path.splitext(f)[0].lower()
+            #print ("suffix = %s, coding = %s, name = %s" % (suffix, coding, name))
             if coding != toCoding.lower():
                 # print ("iconv -f %s -t %s %s > \"%s.tmp\"" % (coding, toCoding, f, f))
                 # print ("mv \"%s.tmp\" %s" % (f, f))
@@ -50,7 +51,7 @@ def resetCodingType(fileList, toCoding="UTF-8"):
     print ("%d file count, %d completed, %d abort, %d needCleanTmp, %d failed" % (count, success, abort, tmpNotClean, failed))
     
 if __name__ == "__main__":
-    resetCodingType(getFileList("./target"), "UTF-8")
+    resetCodingType(getFileList("./test"), "UTF-8")
 
 
 # iconv -f GBK -t UTF-8 原文件名 > 随便起个名

@@ -41,7 +41,7 @@ def readConfig(configFile,suffixs,fileNames,dirNames):
             elif flag == "dirName":
                 dirNames += [line]
     else: config = open(configFile,"x",encoding="UTF-8")
-    config.close
+    config.close()
         
     
 
@@ -60,7 +60,7 @@ def checkTargets(dirPath):
         dirList += getDirList(root,dirs,dirNames)
     print(fileList+dirList)
     record.write(fileList+dirList)
-    record.close
+    record.close()
 
     print ("done")
     os.system("start notepad.exe list.txt")
@@ -83,7 +83,7 @@ def removeTargets():
     if os.path.exists("list.txt") and os.path.isfile("list.txt"):
         f = open("list.txt","r",encoding="UTF-8")
         lines = f.readlines()
-        f.close
+        f.close()
 
         for line in lines:
             flag = line[0]
