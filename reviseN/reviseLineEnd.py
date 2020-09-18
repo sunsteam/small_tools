@@ -10,9 +10,8 @@ def revise(filePath):
     for line in lines:
         line = line.replace("\n","<br/>\n")
         outStr += line
-    outputF = open("revised.html","w",encoding="UTF-8")
-    outputF.write(outStr)
-    outputF.close()
+    with outputF = open("revised.html","w",encoding="UTF-8")
+        outputF.write(outStr)
     
 
 
