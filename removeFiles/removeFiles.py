@@ -11,7 +11,6 @@ def getFileList(root, files,targetSuffixs,fileNames):
         name = part[0].lower()
         if suffix in targetSuffixs or name in fileNames:
             fileList += "f----{}\n".format(os.path.join(root, fullName))
-    print (fileList)
     return fileList
 
 
@@ -58,7 +57,7 @@ def checkTargets(dirPath):
     for root, dirs, files in os.walk(dirPath, followlinks = True):
         fileList += getFileList(root,files,suffixs,fileNames)
         dirList += getDirList(root,dirs,dirNames)
-    print(fileList+dirList)
+    #print(fileList+dirList)
     record.write(fileList+dirList)
     record.close()
 

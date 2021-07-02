@@ -28,7 +28,7 @@ def addUtf8Bom(filePath):
 
 def removeUtf8Bom(filePath):
     data = getFileContent(filePath)
-    if data[:3] == codecs.BOM_UTF8:
+    if data[:3] != codecs.BOM_UTF8:
         return 666
 
     data = data[3:]
@@ -58,9 +58,13 @@ def convert2Utf8(fileList, withBom = False):
                     coding = "gb2312"
                 result = os.system("iconv -f %s -t %s \"%s\" > \"%s.tmp\"" % (coding, toCoding, f, f))
             elif toCoding == "utf-8":
-                result = addUtf8Bom(f) if withBom else removeUtf8Bom(f)
+                if withBom:
+                    result = addUtf8Bom(f)  
+                else: 
+                    result = removeUtf8Bom(f)
             else: 
                 abort += 1
+                print ("file = %s, coding = %s, abort" % (f, coding))
                 continue
 
             if result == 0:
@@ -89,3 +93,4 @@ if __name__ == "__main__":
 # >表示从哪个文件保存为哪个文件
 # iconv --list 显示支持的所有编码
 # find *.txt -exec sh -c "iconv -f GBK -t UTF-8 {} > {}.tmp"
+# ‾
