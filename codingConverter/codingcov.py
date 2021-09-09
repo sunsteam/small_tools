@@ -93,4 +93,4 @@ if __name__ == "__main__":
 # >表示从哪个文件保存为哪个文件
 # iconv --list 显示支持的所有编码
 # find *.txt -exec sh -c "iconv -f GBK -t UTF-8 {} > {}.tmp"
-# ‾
+# ‾ ¥
